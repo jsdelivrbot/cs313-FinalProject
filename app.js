@@ -18,6 +18,10 @@ io.on('connection', function(socket){
   });
 });
 
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname + '/views'));
+
 app.set('port', process.env.PORT || 8888)
 
 http.listen(app.get('port'))
