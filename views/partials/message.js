@@ -9,7 +9,7 @@ $(function () {
     })
 });
     socket.on('chat message', function(msg, name){
-      $('#messages').append($('<li>').text(name +":" + msg));
+      $('#messages').append($('<li>').text(name + ": " + msg));
     });
   });
 
