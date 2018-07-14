@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.use(express.static('public'))
-
+router.use(express.static(__dirname + '/public'));
+router.use(express.static(__dirname + '/views'));
 router.post('/login', function(req, res, next) {
 
             console.log(req.body.username);
