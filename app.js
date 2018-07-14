@@ -34,6 +34,7 @@ app.get('/',function(req,res){
       res.render('nav');
   }
  else if(numberOfConnectedUsers == 0){
+    req.session.destroy;
     numberOfConnectedUsers++;
     roomCode = { RmCd: Math.random().toString(36).substring(7)};
     req.session.roomcode = roomCode.RmCd;      

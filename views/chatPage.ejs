@@ -13,18 +13,19 @@
     <ul id="messages">
       
     </ul>
+    <h3>Room Code: <%= RC %></h3>
+    <h2 id="nameOfUser">Your name is: Jane Doe</h2>
     <form action="">
-      <input id="message" autocomplete="off" /><button>Send</button>
+      <input id="message" autocomplete="off" />
+      <button>Send</button>
     </form>
+
+    <button id ="UserNameChange" onclick="myFunction()">Change Your User Name</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     
     <script type="text/javascript" src="/partials/message.js"></script>
-   
-
-<h1><%= RC %></h1>
-
   </body>
 </html>
     
