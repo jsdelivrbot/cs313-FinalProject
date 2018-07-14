@@ -6,16 +6,18 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 h3 {   
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: 10px;
     border: 3px solid #8AC007;}
-h2 {   
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        border: 3px solid #8AC007;}
+
+div{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #8AC007;
+}            
 #UserNameChange{
     position: absolute;
-    top: 30px;
+    top: 70px;
     left: 0px;
 }
 #messages { height: 900px; overflow: auto;  margin: auto;

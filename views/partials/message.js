@@ -3,22 +3,19 @@ $(function () {
     $.ajax({
         type:'GET',
         success:$('form').submit(function(){
-      socket.emit('chat message', $('#message').val());
+      socket.emit('chat message', $('#message').val(), document.getElementById("nameOfUser").innerHTML);
       $('#message').val('');
       return false;    
     })
 });
-
-    socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(localStorage.getItem("lastname") +":" + msg));
+    socket.on('chat message', function(msg, name){
+      $('#messages').append($('<li>').text(name +":" + msg));
     });
   });
 
   function myFunction() {
     var person = prompt("Please enter your name", "Jane Doe");
-    localStorage.setItem("lastname", person);
-    if (person != null) {
-        document.getElementById("nameOfUser").innerHTML =
-        "Your name is: " + person ;
-    }
+        sessionStorage.setItem("firstPerson", person);
+        document.getElementById("nameOfUser").innerHTML = person;
 }
+

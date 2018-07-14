@@ -34,7 +34,7 @@ app.get('/',function(req,res){
       res.render('nav');
   }
  else if(numberOfConnectedUsers == 0){
-    req.session.destroy;
+
     numberOfConnectedUsers++;
     roomCode = { RmCd: Math.random().toString(36).substring(7)};
     req.session.roomcode = roomCode.RmCd;      
@@ -50,8 +50,8 @@ io.on('connection', function(socket){
   console.log("A user logged in");
   console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
   numberOfConnectedUsers = Object.keys(io.sockets.connected).length;
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat message', function(msg, name){
+    io.emit('chat message', msg, name);
   });
    //Whenever someone disconnects this piece of code executed
    socket.on('disconnect', function () {
