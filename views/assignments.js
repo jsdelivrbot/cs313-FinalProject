@@ -16,7 +16,7 @@ router.post('/login', function(req, res, next) {
             console.log(req.body.username);
               if(req.body.username == req.session.roomcode)
               {		
-              res.redirect('chatPage', {RC:req.session.roomcode}); 
+              res.render('chatPage', {RC:req.session.roomcode}); 
               }
               else
               {
