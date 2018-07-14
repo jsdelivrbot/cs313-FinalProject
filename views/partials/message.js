@@ -1,13 +1,11 @@
-$(function () {
+window.onload = $(function () {
     var socket = io();
-  
     $.ajax({
         type:'GET',
-        sucess:$('form').submit(function(){
+        success:$('form').submit(function(){
       socket.emit('chat message', $('#message').val());
       $('#message').val('');
-      return false;
-      
+      return false;    
     })
 });
 

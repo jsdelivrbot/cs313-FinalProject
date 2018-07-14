@@ -14,18 +14,15 @@ router.use(express.static('public'))
 router.post('/login', function(req, res, next) {
 
             console.log(req.body.username);
-              if(req.body.username == 'admin')
+              if(req.body.username == req.session.roomcode)
               {		
-              console.log("logged in");
-              res.render('chatPage'); 
+              res.render('chatPage', {RC:req.session.roomcode}); 
               }
               else
               {
               console.log("no login");
               res.redirect('/');
-              }
-              
-          
+              }                    
           next();          
     });
 
