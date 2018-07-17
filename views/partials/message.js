@@ -8,9 +8,18 @@ $(function () {
       return false;    
     })
 });
+
     socket.on('chat message', function(msg, name){
+      var chatMsg = name + ": " + msg;
+      var numberOfMessages = localStorage.getItem("numberOfMsg");
+      numberOfMessages++;
+      localStorage.setItem("numberOfMsg", numberOfMessages);
+      localStorage.setItem(numberOfMessages, chatMsg);
+      localStorage.setItem("lastname", "Smith");
       $('#messages').append($('<li>').text(name + ": " + msg));
-    });
+      var element = document.getElementById('messages');
+      element.scrollTop = element.scrollHeight - element.clientHeight;
+        });
   });
 
   function myFunction() {
@@ -19,3 +28,12 @@ $(function () {
         document.getElementById("nameOfUser").innerHTML = person;
 }
 
+$(window).load(function(){
+  for(i = 1; i <= localStorage.getItem("numberOfMsg"); i++)
+    $('#messages').append($('<li>').text(localStorage.getItem(i)));
+})
+
+function clearCache(){
+  localStorage.clear();
+  document.getElementById("messages").innerHTML = "";
+}

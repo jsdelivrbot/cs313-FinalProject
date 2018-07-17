@@ -29,13 +29,11 @@ var numberOfConnectedUsers = 0;
 
 // blog home page
 app.get('/',function(req,res){
-  if(!numberOfUserVAlidation())
-  {
+  if(!numberOfUserVAlidation()){
       res.render('nav');
   }
  else if(numberOfConnectedUsers == 0){
-
-    numberOfConnectedUsers++;
+    numberOfUserVAlidation();
     roomCode = { RmCd: Math.random().toString(36).substring(7)};
     req.session.roomcode = roomCode.RmCd;      
     res.render('chatPage', {RC:req.session.roomcode}); 
@@ -47,17 +45,17 @@ app.get('/',function(req,res){
 
 
 io.on('connection', function(socket){
-  console.log("A user logged in");
-  console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
-  numberOfConnectedUsers = Object.keys(io.sockets.connected).length;
-  socket.on('chat message', function(msg, name){
-    io.emit('chat message', msg, name);
+      console.log("A user logged in");
+      console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
+      numberOfConnectedUsers = Object.keys(io.sockets.connected).length;
+      socket.on('chat message', function(msg, name){
+      io.emit('chat message', msg, name);
   });
    //Whenever someone disconnects this piece of code executed
-   socket.on('disconnect', function () {
-    console.log('A user disconnected');
-    console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
-    numberOfConnectedUsers = Object.keys(io.sockets.connected).length;
+socket.on('disconnect', function () {
+      console.log('A user disconnected');
+      console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
+      numberOfConnectedUsers = Object.keys(io.sockets.connected).length;
  });
 });
 
@@ -73,9 +71,11 @@ console.log('listening on port 8888')
 
 function numberOfUserVAlidation()
 {
-  if(numberOfConnectedUsers > 1)
-  {console.log('A test');
-  return false;}
-  else
-return true;
+  if(numberOfConnectedUsers > 1){
+    console.log('A test');
+    return false;
+  }
+  else{
+    return true;
+  }
 }
