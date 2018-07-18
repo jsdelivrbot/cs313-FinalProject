@@ -7,14 +7,17 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 	<script src="test.js"></script>
+	<link href="../testcss.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
+	<h1>Welcome to the Lobby</h1>
 <div>
 	<form action="/assignments/login" method="POST">
 
 		<input type="text" id="username" name="username" placeholder="ChatRoom Number">
 		<br>
-		<button onclick="login();">Join Chat Room</button>
+		<button id="roomCode" onclick="login();">Join Chat Room</button>
 
 		<div id="status">			
 		</div>

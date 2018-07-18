@@ -1,29 +1,33 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
+body { 
+    background-image: url(/chat.jpg);
+    background-repeat: no-repeat;
+    background-size: 200%;
+    font: 13px Helvetica, Arial;
+}
 form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
 form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
 h3 {   
     position: absolute;
-    top: 0px;
-    right: 10px;
-    border: 3px solid #8AC007;}
+    top: 15px;
+    right: 100px;
+}
 
 div{
     position: absolute;
-    top: 0px;
-    left: 0px;
-    border: 3px solid #8AC007;
+    top: 15px;
+    left: 20px;
 }            
 #UserNameChange{
     position: absolute;
-    top: 70px;
-    left: 0px;
+    top: 80px;
+    left: 30px;
 }
 #clearLC{
     position: absolute;
-    top: 100px;
-    left: 0px;
+    top: 115px;
+    left: 30px;
 }
 #messages { height: 900px; overflow: auto;  margin: auto;
     width: 50%; border:5px solid rgb(24, 25, 26); 
@@ -32,3 +36,4 @@ div{
 
 #messages li { padding: 8px; margin: 0; }
 #messages li:nth-child(odd) { background: #F6F6F6; }
+#messages li:nth-child(even) { background: rgb(126, 216, 122); }
