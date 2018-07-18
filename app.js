@@ -25,13 +25,11 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('view engine', 'ejs');
 let roomCode = null;
-var numberOfConnectedUsers = 0;
 
 // blog home page
 app.get('/',function(req,res){
   
-  if(Object.keys(io.sockets.connected).length > 1){
-      console.log("1 Users");
+  if(io.engine.clientsCount > 1){
       res.render('nav');
   }
  else if(Object.keys(io.sockets.connected).length == 0){
@@ -42,23 +40,18 @@ app.get('/',function(req,res){
   else{    
       console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
       res.render('test');
-      console.log("A user logged in");
     }
   
 })
 
 
 io.on('connection', function(socket){
-      console.log("A user logged in");
-      console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
       socket.on('chat message', function(msg, name){
       io.emit('chat message', msg, name);
   });
 
 //Whenever someone disconnects this piece of code executed
 socket.on('disconnect', function () {
-      console.log('A user disconnected');
-      console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
  });
 });
 
