@@ -32,7 +32,7 @@ app.get('/',function(req,res){
   if(io.engine.clientsCount > 1){
       res.render('nav');
   }
- else if(Object.keys(io.sockets.connected).length == 0){
+ else if(io.engine.clientsCount == 0){
     roomCode = { RmCd: Math.random().toString(36).substring(7)};
     req.session.roomcode = roomCode.RmCd;      
     res.render('chatPage', {RC:req.session.roomcode}); 
