@@ -20,6 +20,11 @@ div{
     top: 70px;
     left: 0px;
 }
+#clearLC{
+    position: absolute;
+    top: 100px;
+    left: 0px;
+}
 #messages { height: 900px; overflow: auto;  margin: auto;
     width: 50%; border:5px solid rgb(24, 25, 26); 
     font: 13px Helvetica, Arial; 
