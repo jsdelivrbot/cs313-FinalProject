@@ -22,7 +22,7 @@ $(function () {
         });
 
         socket.on('disconnect', function () {
-          io.engine.clientsCount;
+          localStorage.setItem("numberOfUsers") = io.engine.clientsCount;
         });
   });
 

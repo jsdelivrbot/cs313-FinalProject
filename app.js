@@ -29,15 +29,16 @@ let roomCode = null;
 // blog home page
 app.get('/',function(req,res){
   
-  if(io.engine.clientsCount > 1){
+  if(numUsers(req) > 1){
       res.render('nav');
   }
- else if(io.engine.clientsCount == 0){
+ else if(numUsers(req) == 0){
     roomCode = { RmCd: Math.random().toString(36).substring(7)};
     req.session.roomcode = roomCode.RmCd;      
     res.render('chatPage', {RC:req.session.roomcode}); 
   }
-  else{    
+  else if(numUsers(req) == 1)
+  {    
       console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
       res.render('test');
     }
@@ -64,3 +65,9 @@ app.set('port', process.env.PORT || 8888)
 http.listen(app.get('port'))
 
 console.log('listening on port 8888')
+
+function numUsers(req)
+{
+  req.session.numberOfUsers = io.engine.clientsCount;
+  return req.session.numberOfUsers;
+}
