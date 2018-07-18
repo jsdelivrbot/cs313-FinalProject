@@ -28,7 +28,8 @@ let roomCode = null;
 var numberOfConnectedUsers = 0;
 
 // blog home page
-app.get('/',function(req,res, next){
+app.get('/',function(req,res){
+  
   if(Object.keys(io.sockets.connected).length > 1){
       console.log("1 Users");
       res.render('nav');
@@ -38,23 +39,10 @@ app.get('/',function(req,res, next){
     req.session.roomcode = roomCode.RmCd;      
     res.render('chatPage', {RC:req.session.roomcode}); 
   }
-  else{
+  else{    
       console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
-      if(Object.keys(io.sockets.connected).length == 1){
-        if(Object.keys(io.sockets.connected).length == 0){
-            res.redirect('/');
-        }
-      else{
-        res.render('test');
-        console.log("A user on room code page");
-        }
-      console.log("redirecting");
-      }
-      else{
       res.render('test');
-      console.log("A user on room code page");
-      }
-
+      console.log("A user logged in");
     }
   
 })
