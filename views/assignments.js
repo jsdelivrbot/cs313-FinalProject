@@ -16,7 +16,7 @@ router.use(express.static('public'))
 router.use(express.static(__dirname + '/public'));
 router.use(express.static(__dirname + '/views'));
 router.post('/login', function(req, res, next) {      
-              if(req.body.username == req.session.roomcode || Object.keys(io.sockets.connected).length == 0)
+              if(req.body.username == req.session.roomcode)
               {		           
                 res.render('chatPage', {RC:req.session.roomcode}); 
               }

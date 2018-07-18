@@ -20,6 +20,10 @@ $(function () {
       var element = document.getElementById('messages');
       element.scrollTop = element.scrollHeight - element.clientHeight;
         });
+
+        socket.on('disconnect', function () {
+          io.engine.clientsCount;
+        });
   });
 
   function myFunction() {
