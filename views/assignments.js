@@ -15,16 +15,14 @@ router.use(express.static(__dirname + '/views'));
 router.post('/login', function(req, res, next) {
 
             console.log(req.body.username);
-              if(req.body.username == req.session.roomcode)
-              {		
-              res.render('chatPage', {RC:req.session.roomcode}); 
+              if(req.body.username == req.session.roomcode){		
+                res.render('chatPage', {RC:req.session.roomcode}); 
               }
-              else
-              {
-              console.log("no login");
-              res.redirect('/');
+              else{
+                console.log("no login");
+                res.redirect('/');
               }                    
-          next();          
+          next();       
     });
 
 module.exports = router;
