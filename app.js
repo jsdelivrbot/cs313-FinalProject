@@ -30,15 +30,28 @@ var numberOfConnectedUsers = 0;
 // blog home page
 app.get('/',function(req,res){
   if(Object.keys(io.sockets.connected).length > 1){
+      console.log("1 Users");
       res.render('nav');
   }
  else if(Object.keys(io.sockets.connected).length == 0){
+    console.log("0 Users");
     roomCode = { RmCd: Math.random().toString(36).substring(7)};
     req.session.roomcode = roomCode.RmCd;      
     res.render('chatPage', {RC:req.session.roomcode}); 
   }
   else{
-    res.render('test');
+      console.log("0 Users second check");
+      if(Object.keys(io.sockets.connected).length == 0){
+        console.log("A user logged in");
+        console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
+      res.redirect('/');
+    }
+      else{
+        console.log("1 Users second check");
+        console.log("Number Of Users " + Object.keys(io.sockets.connected).length);
+      res.render('test');
+      console.log("A user logged in");
+    }
   }
 })
 
